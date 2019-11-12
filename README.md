@@ -2,6 +2,22 @@
 
 ## Baseの設定 
 
+### 0 . composer install
+追加したいLaravelプロジェクトのcomposer.jsonに追記  
+```
+"require": {
+   "clock/base": "dev-master"
+},
+"repositories": [
+       { "packagist": false },
+       {
+           "type": "vcs",
+           "url": "git@gitlab.com:clock-it/base-app.git"
+       }
+],
+```  
+$ composer install  
+
 ### 1. php artisan vendor:publish
 configを反映  
 
