@@ -1,0 +1,36 @@
+{
+    "name": "clock/base",
+    "description": "clocki-it base source",
+    "autoload": {
+        "psr-4": {
+            "clock\\Baserepo\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^6.0"
+    },
+    "repositories": {
+        "dev-package": {
+            "type": "path",
+            "url": "src",
+            "options": {
+                "symlink": true
+            }
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "shin.joko",
+            "email": "shin.joko@clock-it.jp"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "clock\\Baserepo\\Providers\\BaseRepositoryProvider"
+            ]
+        }
+    }
+}
