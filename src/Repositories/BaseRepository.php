@@ -1,9 +1,9 @@
 <?php
-namespace Base\Repositories;
+namespace Clock\Baserepo\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Base\Interfaces\BaseRepositoryInterface;
+use Clock\Baserepo\Interfaces\BaseRepositoryInterface;
 
 class BaseRepository implements BaseRepositoryInterface
 {

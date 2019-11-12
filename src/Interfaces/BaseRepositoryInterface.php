@@ -1,5 +1,5 @@
 <?php
-namespace Base\Interfaces;
+namespace Clock\Baserepo\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;

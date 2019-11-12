@@ -1,10 +1,10 @@
 <?php
-namespace Base\Providers;
+namespace Clock\Baserepo\Providers;
 
-use Base\Commands\InterfaceMakeCommand;
-use Base\Commands\RepositoryMakeCommand;
-use Base\Commands\ModelMakeCommand;
-use Base\Commands\DatabaseMakeCommand;
+use Clock\Baserepo\Commands\InterfaceMakeCommand;
+use Clock\Baserepo\Commands\RepositoryMakeCommand;
+use Clock\Baserepo\Commands\ModelMakeCommand;
+use Clock\Baserepo\Commands\DatabaseMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 
 class CommandServiceProvider extends ArtisanServiceProvider

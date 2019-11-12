@@ -1,8 +1,8 @@
 <?php
-namespace Base\Providers;
+namespace Clock\Baserepo\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Base\Repositories\BaseRepository;
+use Clock\Baserepo\Repositories\BaseRepository;
 
 class BaseRepositoryProvider extends ServiceProvider
 {

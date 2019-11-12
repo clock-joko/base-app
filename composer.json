@@ -3,7 +3,7 @@
     "description": "clocki-it base source",
     "autoload": {
         "psr-4": {
-            "clock\\Baserepo\\": "src/"
+            "Clock\\Baserepo\\": "src/"
         }
     },
     "require": {
@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "clock\\Baserepo\\Providers\\BaseRepositoryProvider"
+                "Clock\\Baserepo\\Providers\\BaseRepositoryProvider"
             ]
         }
     }
