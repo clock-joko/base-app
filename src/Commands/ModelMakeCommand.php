@@ -58,7 +58,7 @@ class ModelMakeCommand extends DefaultModelMakeCommand
     protected function getDefaultNamespace($rootNamespace) : string
     {
         $dir = Str::plural($this->getNameInput());
-        return $rootNamespace . '\DataSources\\' . $dir;
+        return $rootNamespace . '\\' . config('base.directory.path') . '\\' . $dir;
     }
 
     /**

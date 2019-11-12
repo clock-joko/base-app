@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Base\Repositories\BaseRepository;
+use Clock\Baserepo\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\DataSources\Dummys\Dummy;
 use App\DataSources\Dummys\Interfaces\DummyRepositoryInterface;

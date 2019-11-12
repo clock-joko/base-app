@@ -14,6 +14,17 @@ class CommandServiceProvider extends ArtisanServiceProvider
         'InterfaceMake' => 'command.interface.make',
         'DatabaseMake' => 'command.database.make',
     ];
+
+    /**
+     * Bootstrap any application services.
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/config/base.php' => config_path('base.php'),
+        ]);
+    }
+
     /**
      * Register the service provider.
      *

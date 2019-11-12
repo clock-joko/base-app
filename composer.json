@@ -29,7 +29,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Clock\\Baserepo\\Providers\\BaseRepositoryProvider"
+                "Clock\\Baserepo\\Providers\\BaseRepositoryProvider",
+                "Clock\\Baserepo\\Providers\\CommandServiceProvider"
             ]
         }
     }

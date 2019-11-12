@@ -50,7 +50,7 @@ class InterfaceMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace) : string
     {
         $dir = Str::plural($this->getNameInput());
-        return $rootNamespace . '\DataSources\\' . $dir . '\Interfaces';
+        return $rootNamespace . '\\' . config('base.directory.path') . '\\' . $dir . '\Interfaces';
     }
 
     /**

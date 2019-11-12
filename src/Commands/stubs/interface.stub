@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Base\Interfaces\BaseRepositoryInterface;
+use Clock\Baserepo\Interfaces\BaseRepositoryInterface;
 
 interface DummyClass extends BaseRepositoryInterface
 {

@@ -51,7 +51,7 @@ class RepositoryMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace) : string
     {
         $dir = Str::plural($this->getNameInput());
-        return $rootNamespace . '\DataSources\\' . $dir . '\Repositories';
+        return $rootNamespace . '\\' . config('base.directory.path') . '\\' . $dir . '\Repositories';
     }
 
     /**
