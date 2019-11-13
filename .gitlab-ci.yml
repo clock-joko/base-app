@@ -1,9 +1,12 @@
+cache:
+  paths:
+    - vendor/
+
 before_script:
   - apk add git autoconf build-base
   - pecl install xdebug
   - docker-php-ext-install mbstring opcache mysqli pdo pdo_mysql
   - docker-php-ext-enable xdebug
-  - rm composer.lock
   - curl https://getcomposer.org/download/composer.phar > composer.phazr
   - php composer.phar install
 
