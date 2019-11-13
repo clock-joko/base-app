@@ -1,9 +1,12 @@
-image: php:7.2-cli-alpine
-script:
+before_script:
   - apk add git autoconf build-base
   - pecl install xdebug
   - docker-php-ext-install mysqli pdo pdo_mysql
   - docker-php-ext-enable xdebug
   - curl https://getcomposer.org/download/composer.phar > composer.phar
   - php composer.phar install
-  - vendor/bin/phpunit --configuration phpunit.xml
+
+phpunit-7.2:
+  image: php:7.2-cli-alpine
+  script:
+    - vendor/bin/phpunit --configuration phpunit.xml
