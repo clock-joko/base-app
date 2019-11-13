@@ -1,7 +1,7 @@
 before_script:
   - apk add git autoconf build-base
   - pecl install xdebug
-  - docker-php-ext-install mbstring curl json intl gd xml zip bz2 opcache mysqli pdo pdo_mysql
+  - docker-php-ext-install mbstring json intl gd xml zip bz2 opcache mysqli pdo pdo_mysql
   - docker-php-ext-enable xdebug
   - rm composer.lock
   - curl https://getcomposer.org/download/composer.phar > composer.phazr
