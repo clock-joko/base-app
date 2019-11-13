@@ -9,7 +9,7 @@ before_script:
   - pecl install xdebug
   - docker-php-ext-install mysqli pdo pdo_mysql
   - docker-php-ext-enable xdebug
-  - curl https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar > composer.phar
+  - curl https://getcomposer.org/download/composer.phar > composer.phar
   - php composer.phar install
 
 test:
