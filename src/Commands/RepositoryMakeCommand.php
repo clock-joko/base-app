@@ -103,6 +103,6 @@ class RepositoryMakeCommand extends GeneratorCommand
         $dir = Str::plural($this->getNameInput());
         $class = str_replace($this->getNamespace($name).'\\', '', $name);
 
-        return str_replace(array('Dummys', 'Dummy', '$dummy'), array($dir, $class, '$' . lcfirst($class)), $stub);
+        return str_replace(['DummyDirectory', 'Dummys', 'Dummy', '$dummy'], [config('base.directory.path'), $dir, $class, '$' . lcfirst($class)], $stub);
     }
 }

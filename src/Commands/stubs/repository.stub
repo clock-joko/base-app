@@ -4,8 +4,8 @@ namespace DummyNamespace;
 
 use Clock\Baserepo\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\DataSources\Dummys\Dummy;
-use App\DataSources\Dummys\Interfaces\DummyRepositoryInterface;
+use App\DummyDirectory\Dummys\Dummy;
+use App\DummyDirectory\Dummys\Interfaces\DummyRepositoryInterface;
 use Illuminate\Support\Collection;
 
 class DummyClass extends BaseRepository implements DummyRepositoryInterface

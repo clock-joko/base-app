@@ -2,6 +2,7 @@
 
 namespace Clock\Baserepo\Commands;
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Foundation\Console\ModelMakeCommand as DefaultModelMakeCommand;
 use Symfony\Component\Console\Input\InputOption;
@@ -47,6 +48,10 @@ class ModelMakeCommand extends DefaultModelMakeCommand
         if ($this->option('interface')) {
             $this->createInterface();
         }
+
+        if ($this->option('repository') && $this->option('interface')) {
+            $this->addServiceProvider();
+        }
     }
 
     /**
@@ -66,7 +71,7 @@ class ModelMakeCommand extends DefaultModelMakeCommand
      *
      * @return array
      */
-    protected function getOptions()
+    protected function getOptions() : array
     {
         return [
             ['all', 'a', InputOption::VALUE_NONE, 'Generate a migration, factory, and resource controller for the model'],
@@ -94,7 +99,7 @@ class ModelMakeCommand extends DefaultModelMakeCommand
      *
      * @return void
      */
-    protected function createRepository()
+    protected function createRepository() : void
     {
         $modelName = Str::studly(class_basename($this->argument('name')));
 
@@ -108,12 +113,50 @@ class ModelMakeCommand extends DefaultModelMakeCommand
      *
      * @return void
      */
-    protected function createInterface()
+    protected function createInterface() : void
     {
         $modelName = Str::studly(class_basename($this->argument('name')));
 
         $this->call('make:interface', [
             'name' => $modelName,
         ]);
+    }
+
+    /**
+     * Add ServiceProvider
+     *
+     * @return void
+     */
+    protected function addServiceProvider() : void
+    {
+        $modelName = Str::studly(class_basename($this->argument('name')));
+
+        $interfaceName = $modelName . 'RepositoryInterface';
+        $repositoryName = $modelName . 'Repository';
+
+        $dir = Str::plural($modelName);
+
+        $directory = config('base.directory.path');
+
+        $addUse = "use App\\$directory\\$dir\Repositories\\$repositoryName;
+use App\\$directory\\$dir\Interfaces\\$interfaceName;
+// add_use";
+
+        $appChar = '$this->app->bind(';
+
+        $addBind = "$appChar
+            $interfaceName::class,
+            $repositoryName::class
+        );
+
+        // add_bind";
+
+        $filePath = './app/Providers/' . config('base.provider.file') . '.php';
+
+        $providerContent = File::get($filePath);
+
+        $providerContent = str_replace(['// add_use', '// add_bind'], [$addUse, $addBind], $providerContent);
+
+        File::put($filePath, $providerContent);
     }
 }
