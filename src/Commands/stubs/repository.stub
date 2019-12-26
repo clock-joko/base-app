@@ -18,6 +18,5 @@ class DummyClass extends BaseRepository implements DummyRepositoryInterface
     public function __construct(Dummy $dummy)
     {
         parent::__construct($dummy);
-        $this->model = $dummy;
     }
 }
