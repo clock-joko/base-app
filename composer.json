@@ -1,14 +1,14 @@
 {
-    "name": "clock/base",
+    "name": "clock-it/base",
     "description": "clock-it base source",
     "autoload": {
         "psr-4": {
-            "Clock\\Baserepo\\": "src/"
+            "ClockIt\\Baserepo\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Clock\\Baserepo\\Test\\": "tests/"
+            "ClockIt\\Baserepo\\Test\\": "tests/"
         }
     },
     "require": {
@@ -38,8 +38,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Clock\\Baserepo\\Providers\\BaseRepositoryProvider",
-                "Clock\\Baserepo\\Providers\\CommandServiceProvider"
+                "ClockIt\\Baserepo\\Providers\\BaseRepositoryProvider",
+                "ClockIt\\Baserepo\\Providers\\CommandServiceProvider"
             ]
         }
     }
