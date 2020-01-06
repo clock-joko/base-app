@@ -1,5 +1,5 @@
 <?php
-namespace Clock\Baserepo\Requests;
+namespace ClockIt\Baserepo\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

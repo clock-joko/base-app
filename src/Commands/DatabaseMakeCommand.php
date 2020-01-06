@@ -1,6 +1,6 @@
 <?php
 
-namespace Clock\Baserepo\Commands;
+namespace ClockIt\Baserepo\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
