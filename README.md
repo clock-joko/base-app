@@ -3,20 +3,6 @@
 ## Baseの設定 
 
 ### 0 . composer install
-追加したいLaravelプロジェクトのcomposer.jsonに追記  
-```
-"require": {
-   "clock/base": "dev-master"
-},
-"repositories": [
-       { "packagist": false },
-       {
-           "type": "vcs",
-           "url": "git@gitlab.com:clock-it/base-app.git"
-       }
-],
-```  
-$ composer install  
 
 ### 1. php artisan vendor:publish
 configを反映  
@@ -41,7 +27,10 @@ envに設定すれば配置ディレクトリを変更可能
 
 ### 4.RepositoryServiceProviderを追加（手動）
 作成した各RepositoryとInterfaceをbindする  
-
+  
+-y -i  
+どちらもオプションに記載した場合は自動で追加される方法あり  
+  
 ＜参考＞
 app/Providers/RepositoryServiceProvider.php
 ```
