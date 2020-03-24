@@ -153,6 +153,10 @@ use App\\$directory\\$dir\Interfaces\\$interfaceName;
 
         $filePath = './app/Providers/' . config('base.provider.file') . '.php';
 
+        if (file_exists($filePath)) {
+            copy(__DIR__ . '/stubs/provider.stub', $filePath);
+        }
+
         $providerContent = File::get($filePath);
 
         $providerContent = str_replace(['// add_use', '// add_bind'], [$addUse, $addBind], $providerContent);
