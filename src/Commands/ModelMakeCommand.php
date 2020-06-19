@@ -153,11 +153,27 @@ use App\\$directory\\$dir\Interfaces\\$interfaceName;
 
         $filePath = './app/Providers/' . config('base.provider.file') . '.php';
 
-        $providerContent = File::get($filePath);
-
+        if (! File::exists($filePath)) {
+            $stub = $this->files->get($this->getRepositoryProviderStub());
+            File::append($filePath, $stub);
+            $providerContent = File::get($filePath);
+            $providerContent = str_replace('DummyRepositoryServiceProvider', config('base.provider.file'), $providerContent);
+        } else {
+            $providerContent = File::get($filePath);
+        }
 
         $providerContent = str_replace(['// add_use', '// add_bind'], [$addUse, $addBind], $providerContent);
 
         File::put($filePath, $providerContent);
+    }
+
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getRepositoryProviderStub()
+    {
+        return __DIR__.'/stubs/provider.stub';
     }
 }

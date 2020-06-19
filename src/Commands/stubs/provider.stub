@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 // add_use
 
-class RepositoryServiceProvider extends ServiceProvider
+class DummyRepositoryServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
