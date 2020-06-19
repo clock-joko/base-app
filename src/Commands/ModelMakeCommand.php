@@ -22,6 +22,7 @@ class ModelMakeCommand extends DefaultModelMakeCommand
 
         if ($this->option('all')) {
             $this->input->setOption('factory', true);
+            $this->input->setOption('seed', true);
             $this->input->setOption('migration', true);
             $this->input->setOption('controller', true);
             $this->input->setOption('resource', true);
@@ -37,7 +38,11 @@ class ModelMakeCommand extends DefaultModelMakeCommand
             $this->createMigration();
         }
 
-        if ($this->option('controller') || $this->option('resource')) {
+        if ($this->option('seed')) {
+            $this->createSeeder();
+        }
+
+        if ($this->option('controller') || $this->option('resource') || $this->option('api')) {
             $this->createController();
         }
 
@@ -53,6 +58,7 @@ class ModelMakeCommand extends DefaultModelMakeCommand
             $this->addServiceProvider();
         }
     }
+
 
     /**
      * Get the default namespace for the class.
@@ -74,23 +80,17 @@ class ModelMakeCommand extends DefaultModelMakeCommand
     protected function getOptions() : array
     {
         return [
-            ['all', 'a', InputOption::VALUE_NONE, 'Generate a migration, factory, and resource controller for the model'],
-
+            ['all', 'a', InputOption::VALUE_NONE, 'Generate a migration, seeder, factory, and resource controller for the model'],
             ['controller', 'c', InputOption::VALUE_NONE, 'Create a new controller for the model'],
-
             ['factory', 'f', InputOption::VALUE_NONE, 'Create a new factory for the model'],
-
             ['force', null, InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
-
             ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model'],
-
+            ['seed', 's', InputOption::VALUE_NONE, 'Create a new seeder file for the model'],
             ['pivot', 'p', InputOption::VALUE_NONE, 'Indicates if the generated model should be a custom intermediate table model'],
-
             ['resource', 'r', InputOption::VALUE_NONE, 'Indicates if the generated controller should be a resource controller'],
-
             ['repository', 'y', InputOption::VALUE_NONE, 'Create a new repository for the model'],
-
             ['interface', 'i', InputOption::VALUE_NONE, 'Create a new interface for the model'],
+            ['api', null, InputOption::VALUE_NONE, 'Indicates if the generated controller should be an API controller'],
         ];
     }
 
@@ -153,11 +153,8 @@ use App\\$directory\\$dir\Interfaces\\$interfaceName;
 
         $filePath = './app/Providers/' . config('base.provider.file') . '.php';
 
-        if (file_exists($filePath)) {
-            copy(__DIR__ . '/stubs/provider.stub', $filePath);
-        }
-
         $providerContent = File::get($filePath);
+
 
         $providerContent = str_replace(['// add_use', '// add_bind'], [$addUse, $addBind], $providerContent);
 
