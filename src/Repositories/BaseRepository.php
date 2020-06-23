@@ -65,7 +65,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function save(array $attributes) : bool
     {
-        return $this->model->save($attributes);
+        return $this->model->fill($attributes)->save();
     }
 
     /**
