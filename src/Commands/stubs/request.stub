@@ -1,0 +1,28 @@
+<?php
+
+namespace DummyNamespace;
+
+use ClockIt\Baserepo\Requests\BaseFormRequest;
+
+class DummyClass extends BaseFormRequest
+{
+    /**
+     * @return array|string[]
+     */
+    public function rules()
+    {
+        return [
+
+        ];
+    }
+
+    /**
+     * @return array|string[]
+     */
+    public function messages()
+    {
+        return [
+
+        ];
+    }
+}

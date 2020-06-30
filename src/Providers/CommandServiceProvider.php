@@ -5,6 +5,7 @@ use ClockIt\Baserepo\Commands\InterfaceMakeCommand;
 use ClockIt\Baserepo\Commands\RepositoryMakeCommand;
 use ClockIt\Baserepo\Commands\ModelMakeCommand;
 use ClockIt\Baserepo\Commands\DatabaseMakeCommand;
+use ClockIt\Baserepo\Commands\RequestMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider;
 
 class CommandServiceProvider extends ArtisanServiceProvider
@@ -46,6 +47,18 @@ class CommandServiceProvider extends ArtisanServiceProvider
     {
         $this->app->singleton('command.model.make', function ($app) {
             return new ModelMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerRequestMakeCommand()
+    {
+        $this->app->singleton('command.request.make', function ($app) {
+            return new RequestMakeCommand($app['files']);
         });
     }
 
